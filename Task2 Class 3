@@ -1,0 +1,8 @@
+def generate_multiplication_tables():
+    tables = [[i * j for j in range(1, 11)] for i in range(1, 11)]
+    return tables
+
+# Call the function and print the result
+multiplication_tables = generate_multiplication_tables()
+for table in multiplication_tables:
+    print(table)
