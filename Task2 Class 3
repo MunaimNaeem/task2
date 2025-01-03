@@ -1,8 +1,435 @@
-def generate_multiplication_tables():
-    tables = [[i * j for j in range(1, 11)] for i in range(1, 11)]
-    return tables
+# def generate_multiplication_tables():
+#     tables = [[i * j for j in range(1, 11)] for i in range(1, 11)]
+#     return tables
 
-# Call the function and print the result
-multiplication_tables = generate_multiplication_tables()
-for table in multiplication_tables:
-    print(table)
+# # Call the function and print the result
+# multiplication_tables = generate_multiplication_tables()
+# for table in multiplication_tables:
+#     print(table)
+    
+# find the minmul value form the finction f(x1, x2, x3) = x1x2 + x2x3 + x1x3
+# this is the equality constraints x1 + x2 + x3 = 3
+# Fmin=?
+# x1=?
+# x2=?
+# x3=?
+# from scipy.optimize import minimize
+# import numpy as np
+
+
+# def objective(x):
+#     x1, x2, x3 = x
+#     return x1 * x2 + x2 * x3 + x1 * x3
+
+
+# def constraint_eq(x):
+#     return x[0] + x[1] + x[2] - 3
+
+
+# x0 = [1, 1, 1]  
+
+
+# constraints = ({'type': 'eq', 'fun': constraint_eq})
+
+
+# bounds = [(0, None), (0, None), (0, None)]  
+
+
+# result = minimize(objective, x0, bounds=bounds, constraints=constraints)
+
+
+# if result.success:
+#     print("Optimal value of the objective function:", result.fun)
+#     print("Optimal values of x1, x2, x3:", result.x)
+# else:
+#     print("Optimization failed:", result.message)
+
+
+# F(X1, X2) =6X1^2 + 2x2^2 + 7x1 - 21 x2
+# fmin = ?
+# x1 = ?
+# x2 = ?
+
+
+
+# from scipy.optimize import minimize
+# import numpy as np
+# import matplotlib.pyplot as plt
+# from mpl_toolkits.mplot3d import Axes3D
+
+
+# def objective(x):
+#     x1, x2 = x
+   
+#     obj_val = 6 * x1**2 + 2 * x2**2 + 7 * x1 - 21 * x2
+    
+   
+#     penalty_ineq = 0
+#     if x2 > -1:
+#         penalty_ineq = 100 * (x2 + 1)  
+        
+   
+#     penalty_eq = 0
+#     if abs(2 * x1 - 4 * x2 - 3) > 1e-6:  
+#         penalty_eq = 100 * abs(2 * x1 - 4 * x2 - 3)  
+    
+
+#     total_obj = obj_val + penalty_ineq + penalty_eq
+#     return total_obj
+
+
+# x0 = [0.5, -1.5]
+
+
+# result = minimize(objective, x0, method='trust-constr', options={'xtol': 1e-6, 'gtol': 1e-6})
+
+
+# if result.success:
+#     Fmin = result.fun
+#     x1, x2 = result.x
+#     print(f"Fmin: {Fmin:.4f}")
+#     print(f"x1: {x1:.4f}")
+#     print(f"x2: {x2:.4f}")
+    
+    
+#     print("\nChecking Constraints:")
+#     print(f"Equality Constraint (2x1 - 4x2 = 3): {2 * x1 - 4 * x2 - 3:.4f}")
+#     print(f"Inequality Constraint (x2 <= -1): {x2 + 1:.4f}")
+
+    
+#     x1_vals = np.linspace(x1 - 2, x1 + 2, 400)
+#     x2_vals = np.linspace(x2 - 2, x2 + 2, 400)
+#     X1, X2 = np.meshgrid(x1_vals, x2_vals)
+#     Z = 6 * X1**2 + 2 * X2**2 + 7 * X1 - 21 * X2
+    
+  
+#     fig = plt.figure(figsize=(10, 8))
+#     ax = fig.add_subplot(111, projection='3d')
+
+   
+#     ax.plot_surface(X1, X2, Z, cmap='viridis', edgecolor='none', alpha=0.7)
+
+
+#     Z_eq = np.zeros_like(X1)
+#     for i in range(len(X1)):
+#         for j in range(len(X2)):
+#             Z_eq[i, j] = 2 * X1[i, j] - 4 * X2[i, j] - 3
+#     ax.plot_surface(X1, X2, Z_eq, cmap='coolwarm', edgecolor='none', alpha=0.5)
+
+    
+#     Z_ineq = np.zeros_like(X1)
+#     for i in range(len(X1)):
+#         for j in range(len(X2)):
+#             Z_ineq[i, j] = X2[i, j] + 1  
+#     ax.plot_surface(X1, X2, Z_ineq, cmap='inferno', edgecolor='none', alpha=0.5)
+
+   
+#     ax.scatter(x1, x2, Fmin, color='r', s=100, label='Minimum Point')
+
+  
+#     ax.set_xlabel('x1')
+#     ax.set_ylabel('x2')
+#     ax.set_zlabel('Objective Function Value / Constraints')
+#     ax.set_title('3D Surface Plot of Objective Function and Constraints')
+#     ax.legend()
+
+ 
+#     plt.tight_layout()
+#     plt.show()
+
+# else:
+#     print("Optimization failed:", result.message)
+
+
+
+
+
+
+
+
+
+
+# import numpy as np
+# from scipy.optimize import minimize
+# import matplotlib.pyplot as plt
+
+
+# def cost_function(r):
+#     pi = np.pi
+  
+#     h = 300 / (pi * r**2)
+  
+#     cost = 2*10 * pi * r**2 + 10 * pi * r * h
+#     return cost
+
+
+# r0 = 5 
+
+
+# result = minimize(cost_function, r0, bounds=[(0.1, 10)])  
+
+
+# r_optimal = result.x[0]
+# h_optimal = 300 / (np.pi * r_optimal**2)
+
+
+# print(f"Optimal Radius (r): {r_optimal:.4f} cm")
+# print(f"Optimal Height (h): {h_optimal:.4f} cm")
+# print(f"Minimum Cost: {result.fun:.4f} cents")
+
+
+# r_vals = np.linspace(0.1, 10, 100)
+# cost_vals = [cost_function(r) for r in r_vals]
+
+# plt.plot(r_vals, cost_vals, label='Cost Function')
+# plt.plot(r_optimal, result.fun, 'ro', label=f'Minimum Cost at r = {r_optimal:.4f}')
+# plt.xlabel('Radius (cm)')
+# plt.ylabel('Cost (cents)')
+# plt.title('Cost Function vs. Radius')
+# plt.legend()
+# plt.grid(True)
+# plt.show()
+
+
+
+
+
+
+
+
+
+
+# import numpy as np
+# from scipy.optimize import minimize
+
+# # Given data
+# V_r = 13  # Running speed in km/h
+# V_s = 5   # Swimming speed in km/h
+# distance_total = 10  # Total distance in km
+
+# # Function to calculate the total time
+# def total_time(x):
+#     # Time taken by running x km and swimming (10 - x) km
+#     return (x / V_r) + ((distance_total - x) / V_s)
+
+# # Initial guess for the optimization (can start with running the whole distance or swimming)
+# initial_guess = 5  # Trying a middle point
+
+# # Perform the optimization to minimize the total time
+# result = minimize(total_time, initial_guess, bounds=[(0, distance_total)])
+
+# # Extract the optimal solution
+# optimal_x = result.x[0]
+# optimal_time = result.fun
+
+# # Calculate the time if running only (x = 10 km) and swimming only (x = 0 km)
+# time_running_only = distance_total / V_r
+# time_swimming_only = distance_total / V_s
+
+# # Display the results
+# print(f"Optimal distance to run: {optimal_x:.2f} km")
+# print(f"Optimal time (run + swim): {optimal_time:.2f} hours")
+# print(f"Time if running only (10 km): {time_running_only:.2f} hours")
+# print(f"Time if swimming only (10 km): {time_swimming_only:.2f} hours")
+
+# # Compare the optimal solution with running only and swimming only
+# if optimal_time < time_running_only and optimal_time < time_swimming_only:
+#     print("The optimal solution is a combination of running and swimming.")
+# elif time_running_only < time_swimming_only:
+#     print("The optimal solution is running the entire 10 km.")
+# else:
+#     print("The optimal solution is swimming the entire 10 km.")
+
+
+
+
+
+# import pyswarms as ps
+# from pyswarms.utils.functions import single_obj as fx
+
+# # Define the optimization problem
+# bounds = ([-5, -5], [5, 5])  # Boundaries for each dimension
+# options = {'c1': 0.5, 'c2': 0.3, 'w': 0.9}
+
+# # Create an instance of the PSO optimizer
+# optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=2, options=options, bounds=bounds)
+
+# # Optimize a sphere function
+# best_cost, best_pos = optimizer.optimize(fx.sphere, iters=100)
+
+# print(f"Best Position: {best_pos}, Best Cost: {best_cost}")
+
+
+# import numpy as np
+# from geneticalgorithm import geneticalgorithm as ga
+# def objective (x):
+#     return x[0]*x[0]+x[0]*x[1]+x[1]*x[1]*4-30*x[0]-60*x[1]+400
+# varbound = np.array([[-100,100],[-100,100]])
+# algoritham_param = {'max_num_iteration': 100,\
+#                     "populatyion_size":100,\
+#                     "mutation_proabability":0.1,\
+#                     "elit_ratio":0.01,\
+#                     "crossover_probability":0.5,\
+#                     "parents_portion":0.3,\
+#                     "crossover_type":'uniform',\
+#                     "max_iteration_without_improv":None}
+# model=ga(function=objective,dimension=2,variable_type='real', variable_boundaries=varbound)
+# model.run()
+
+
+
+
+
+# import numpy as np
+# from geneticalgorithm import geneticalgorithm as ga
+
+# # Objective function
+# def objective(x):
+#     return x[0] * x[0] + x[0] * x[1] + x[1] * x[1] * 4 - 30 * x[0] - 60 * x[1] + 400 +10*(10*x[0]-2*x[1])**2
+
+
+# def constraint(x):
+    
+#     return 10 * x[0] - 2 * x[1]
+
+
+# def objective_with_constraint(x):
+#     penalty = 1000 
+#     constraint_value = constraint(x)
+#     if abs(constraint_value) > 1e-6:  
+#         return objective(x) + penalty * abs(constraint_value)
+#     else:
+#         return objective(x)
+
+
+# varbound = np.array([[-100, 100], [-100, 100]])
+
+
+# algorithm_param = {
+#     'max_num_iteration': 100,
+#     'population_size': 100,
+#     'mutation_probability': 0.1,
+#     'elit_ratio': 0.01,
+#     'crossover_probability': 0.5,
+#     'parents_portion': 0.3,
+#     'crossover_type': 'uniform',
+#     'max_iteration_without_improv': None,
+# }
+
+
+# model = ga(
+#     function=objective_with_constraint,
+#     dimension=2,
+#     variable_type='real',
+#     variable_boundaries=varbound,
+#     algorithm_parameters=algorithm_param
+# )
+# model.run()
+
+
+
+
+
+
+
+
+
+
+
+
+
+# import numpy as np
+# def objective(x):
+#     return x[:,0]*x[:,0] + x[:,0]*x[:,1]+x[:,1]*x[:,1]*4-30*x[:,0]-60*x[:,1]+400+10*(10*x[:,0]-2*x[:,1])**2
+# import pyswarms as ps
+# from pyswarms.utils.functions import single_obj as fx
+# options ={'c1':0.5, 'c2':0.3, 'w':0.9}
+# optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=2, options=options)
+# cost, pos = optimizer.optimize(objective, iters=1000)
+
+
+
+
+
+
+# import numpy as np
+# from scipy.optimize import dual_annealing
+# objective = lambda  x: x[0]*x[0] + x[0]*x[1]+x[1]*x[1]*4-30*x[0]-60*x[1]+400+10*(10*x[0]-2*x[1])**2
+# bbounds=[[-100,100],[-100,100]]
+# ret = dual_annealing(objective, bounds=bbounds)
+# print(ret.x)
+# print(ret.fun)
+
+
+
+
+
+
+
+
+# # Install PuLP if not already installed
+# #!pip install pulp
+
+# from pulp import LpProblem, LpMinimize, LpVariable, lpSum
+
+# # Create the problem instance
+# model = LpProblem(name="task_optimization", sense=LpMinimize)
+
+# # Define variables
+# x = LpVariable(name="x", lowBound=0)
+# y = LpVariable(name="y", lowBound=0)
+# z = LpVariable(name="z", lowBound=0)
+
+# # Add constraints
+# model += (-x + y + 2*z <= 15), "Constraint_1"
+# model += (-x - y - z <= 11), "Constraint_2"
+# model += (x + y <= 16), "Constraint_3"
+# model += (y <= 14), "Constraint_4"
+
+# # Objective function
+# model += lpSum([6*x, 10*y, 4*z]), "Objective"
+
+# # Solve the problem
+# status = model.solve()
+
+# # Display the results
+# print(f"Status: {model.status}")
+# print(f"x = {x.value()}")
+# print(f"y = {y.value()}")
+# print(f"z = {z.value()}")
+# print(f"Target = {model.objective.value()}")
+
+
+
+from graphviz import Digraph
+
+# Create UML Diagram
+g = Digraph("UML Diagram")
+
+# Define Nodes
+g.node("DAQ", shape="record")
+g.node("DAQ_A", shape="record")
+g.node("DAQ_M", shape="record")
+g.node("DAQ_U", shape="record")
+g.node("DTN", shape="record")
+g.node("<<interface>>\nTransmission", shape="record")  # Interface for data packet transmission
+g.node("D", shape="record")  # Class D for sensors
+g.node("M", shape="record")  # Meteorological sensor
+g.node("HD", shape="record")  # Hydrological sensor
+
+# Define Edges
+g.edge("DAQ", "DAQ_A", arrowhead="empty", style="dashed")
+g.edge("DAQ", "DAQ_M", arrowhead="empty", style="dashed")
+g.edge("DAQ", "DAQ_U", arrowhead="empty", style="dashed")
+g.edge("DAQ", "<<interface>>\nTransmission", arrowhead="empty", style="dashed")
+g.edge("DAQ", "DTN", arrowhead="vee", style="dashed", label="uses")
+g.edge("DAQ", "D", arrowhead="empty", style="dashed")
+g.edge("D", "M", arrowhead="empty", style="dashed")
+g.edge("D", "HD", arrowhead="empty", style="dashed")
+
+# Render UML Diagram
+g.view()
+
+
+
+

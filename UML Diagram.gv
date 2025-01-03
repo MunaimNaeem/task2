@@ -1,0 +1,21 @@
+digraph "UML Diagram" {
+	DAQ [shape=record]
+	DAQ_A [shape=record]
+	DAQ_M [shape=record]
+	DAQ_U [shape=record]
+	DTN [shape=record]
+	"<<interface>>
+Transmission" [shape=record]
+	D [shape=record]
+	M [shape=record]
+	HD [shape=record]
+	DAQ -> DAQ_A [arrowhead=empty style=dashed]
+	DAQ -> DAQ_M [arrowhead=empty style=dashed]
+	DAQ -> DAQ_U [arrowhead=empty style=dashed]
+	DAQ -> "<<interface>>
+Transmission" [arrowhead=empty style=dashed]
+	DAQ -> DTN [label=uses arrowhead=vee style=dashed]
+	DAQ -> D [arrowhead=empty style=dashed]
+	D -> M [arrowhead=empty style=dashed]
+	D -> HD [arrowhead=empty style=dashed]
+}

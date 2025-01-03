@@ -1,0 +1,72 @@
+
+import turtle
+import time
+
+screen = turtle.Screen()
+screen.bgcolor("black")
+
+
+pen = turtle.Turtle()
+pen.hideturtle()
+
+
+pen.speed= (1)
+
+def draw_heart():
+    pen.penup()
+    pen.goto(0, -200)  
+    pen.pendown()
+    pen.begin_fill()
+    pen.color("red")  
+
+    pen.left(50)
+    pen.forward(133)
+    pen.circle(50, 200)  
+    pen.right(140)
+    pen.circle(50, 200) 
+    pen.forward(133)
+
+    pen.end_fill()
+
+
+def display_gu():
+    pen.penup()
+    pen.goto(0, 10)  
+    pen.color("blue")
+    pen.write("Gu", align="center", font=("Comic Sans MS", 36, "bold"))
+def display_man():
+    pen.penup()
+    pen.goto(0, -250)  
+    pen.color("blue")
+    pen.write("Man", align="center", font=("Comic Sans MS", 36, "bold"))
+def blink_name():
+    for _ in range(10): 
+       
+        pen.penup()
+        pen.goto(0, 10)
+        pen.color("white")
+        pen.write("Gu", align="center", font=("Comic Sans MS", 36, "bold"))
+        pen.goto(0, -250)
+        pen.write("Man", align="center", font=("Comic Sans MS", 36, "bold"))
+        time.sleep(0.5)
+
+        
+        pen.color("blue")
+        pen.goto(0, 10)
+        pen.write("Gu", align="center", font=("Comic Sans MS", 36, "bold"))
+        pen.goto(0, -250)
+        pen.write("Man", align="center", font=("Comic Sans MS", 36, "bold"))
+        time.sleep(0.5)
+
+
+draw_heart()        
+display_gu()         
+display_man()       
+time.sleep(2)        
+blink_name()        
+
+
+screen.exitonclick()
+
+
+
